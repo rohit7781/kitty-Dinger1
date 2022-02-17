@@ -478,7 +478,7 @@ function App() {
               color: "var(--primary-text)",
             }}
           >
-            KittyDinger may look like a cute cat on the outside but behind the
+            KittyDinger may kook like a cute cat on the outside but behind the
             cute exterior lies a fearsome fighter
           </s.TextDescription>
           <s.TextDescription
