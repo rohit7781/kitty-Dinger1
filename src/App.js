@@ -4,7 +4,7 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import webimage from "./web-image.png";
 import SocialFollow from "./SocialFollow";
-import './App.css';
+import "./App.css";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 
@@ -104,6 +104,8 @@ function App() {
   const [claimingNft, setClaimingNft] = useState(false);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
+  const [isWhitelisted, setIsWhitelisted] = useState(false);
+
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -123,7 +125,15 @@ function App() {
     SHOW_BACKGROUND: false,
   });
 
+  const checkIfWhitelisted = async () => {
+    let result = blockchain.smartContract.methods.whitelisted(
+      blockchain.account
+    );
+    setIsWhitelisted(result);
+  };
+
   const claimNFTs = () => {
+    checkIfWhitelisted();
     let cost = CONFIG.WEI_COST;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
@@ -132,6 +142,11 @@ function App() {
     console.log("Gas limit: ", totalGasLimit);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
+    if (!isWhitelisted) {
+      alert("You are not whitelisted to mint NFTs.");
+      return;
+    }
+
     blockchain.smartContract.methods
       .mint(blockchain.account, mintAmount)
       .send({
@@ -191,6 +206,10 @@ function App() {
   useEffect(() => {
     getConfig();
   }, []);
+
+  // useEffect(() => {
+  //   getWhitelistedAddress();
+  // }, []);
 
   useEffect(() => {
     getData();
@@ -391,7 +410,7 @@ function App() {
                           getData();
                         }}
                       >
-                        {claimingNft ? "BUSY" : "BUY"}
+                        {claimingNft && isWhitelisted ? "BUSY" : "BUY"}
                       </StyledButton>
                     </s.Container>
                   </>
@@ -434,11 +453,8 @@ function App() {
           </s.TextDescription>
         </s.Container>
         <s.Container jc={"center"} ai={"center"} style={{ width: "80%" }}>
-          
-          
           <s.TextDescription
-            style={
-              {
+            style={{
               textAlign: "center",
               textTransform: "uppercase",
               padding: "8px",
@@ -448,25 +464,23 @@ function App() {
           >
             KittyDinger
           </s.TextDescription>
-          
-      <div>
-        <div className="myImage"> </div>
-      </div>
-    
-          
+
+          <div>
+            <div className="myImage"> </div>
+          </div>
+
           <s.TextDescription
-            style={
-              {
+            style={{
               textAlign: "center",
               fontSize: "25px",
               color: "var(--primary-text)",
             }}
           >
-            KittyDinger may kook like a cute cat on the outside but behind the cute exterior lies a fearsome fighter
+            KittyDinger may kook like a cute cat on the outside but behind the
+            cute exterior lies a fearsome fighter
           </s.TextDescription>
           <s.TextDescription
-            style={
-              {
+            style={{
               textAlign: "center",
               textTransform: "uppercase",
               padding: "8px",
@@ -477,27 +491,25 @@ function App() {
             MINT $KITTIES
           </s.TextDescription>
           <s.TextDescription
-            style={
-              {
+            style={{
               textAlign: "left",
               fontSize: "25px",
               color: "var(--primary-text)",
             }}
           >
-            By minting you will receive $KITTIES, which can be used in game for a variety of purposes.<br></br>
-- Choose the number of $KITTIES you wish to mint, then click on the mint button.<br></br>
-- A maximum of 6 $KITTIES can be minted per wallet.<br></br>
-- There will be a total of 3000 $KITTIES available for minting.<br></br>
-
-Current price: 0.07 ETH + Gas Fee<br></br><br></br>
-<SocialFollow/>
+            By minting you will receive $KITTIES, which can be used in game for
+            a variety of purposes.<br></br>- Choose the number of $KITTIES you
+            wish to mint, then click on the mint button.<br></br>- A maximum of
+            6 $KITTIES can be minted per wallet.<br></br>- There will be a total
+            of 3000 $KITTIES available for minting.<br></br>
+            Current price: 0.07 ETH + Gas Fee<br></br>
+            <br></br>
+            <SocialFollow />
           </s.TextDescription>
         </s.Container>
       </s.Container>
     </s.Screen>
-    
   );
- 
 }
 
 export default App;
