@@ -1,0 +1,18 @@
+{
+  "CONTRACT_ADDRESS": "0x069b6f8ef0cf2411f47917bd27e4e6c6db00738e",
+  "SCAN_LINK": "https://mumbai.polygonscan.com/token/0x069b6f8ef0cf2411f47917bd27e4e6c6db00738e",
+  "NETWORK": {
+    "NAME": "Matic Mumbai",
+    "SYMBOL": "Matic",
+    "ID": 80001
+  },
+  "NFT_NAME": "KittyDinger",
+  "SYMBOL": "KID",
+  "MAX_SUPPLY": 3000,
+  "WEI_COST": 70000000000000000,
+  "DISPLAY_COST": 0.07,
+  "GAS_LIMIT": 285000,
+  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/kittydinger-v2",
+  "SHOW_BACKGROUND": true
+}
