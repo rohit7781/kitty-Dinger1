@@ -1,5 +1,6 @@
 {
   "name": "the_stripes_nft_dapp",
+  "homepage": "https://kittydinger.com",
   "version": "1.0.0",
   "description": "The Stripes NFT minting dapp is a quick and easy way to connect your smart contract and start minting NFTs.",
   "private": true,
