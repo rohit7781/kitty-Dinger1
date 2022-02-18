@@ -24,13 +24,6 @@ const connectFailed = (payload) => {
   };
 };
 
-// export const checkPresaleUser = (payload) => {
-//   return {
-//     type: "CHECK-FOR-PRESALE-USER",
-//     payload: payload,
-//   };
-// };
-
 const updateAccountRequest = (payload) => {
   return {
     type: "UPDATE_ACCOUNT",

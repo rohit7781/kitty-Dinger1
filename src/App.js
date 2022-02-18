@@ -136,24 +136,6 @@ function App() {
     setIsWhitelisted(result);
   };
 
-  // const checkForPresaleUser = async () => {
-  //   if (isWhitelisted) {
-  //     // setTimeout(()=> {
-  //     //   debugger
-  //       // console.log(blockchain.smartContract.methods.whitelisted(
-  //       //   "0x0029058432826e03ffa10e277d04f1d9098e4055"
-  //       // ))
-  //       smartContract && smartContract["_jsonInterface"].forEach((elm)=> {
-  //       if(elm.name === "saleStartsOn") {
-  //         const timeData = {startOnTime : elm.outputs[0].name, currentTime : Math.floor(Date.now() / 1000)}
-  //         setPreSaleTime(timeData)
-  //         if(elm.outputs[0].name - Math.floor(Date.now() / 1000) > 0){
-  //         dispatch(checkPresaleUser(true))
-  //         }
-  //       }})
-  //     // }, 2000)
-  //   }}
-
   const claimNFTs = () => {
     checkIfWhitelisted();
     let cost = CONFIG.WEI_COST;
@@ -227,7 +209,6 @@ function App() {
 
   useEffect(() => {
     getConfig();
-    // connect()(dispatch)
   }, []);
 
   // useEffect(() => {
@@ -237,10 +218,6 @@ function App() {
   useEffect(() => {
     getData();
   }, [blockchain.account]);
-
-  // useEffect(()=> {
-  //     checkForPresaleUser()
-  //   },[isWhitelisted])
     
   return (
     <s.Screen>
