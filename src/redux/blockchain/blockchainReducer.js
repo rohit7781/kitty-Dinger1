@@ -4,6 +4,7 @@ const initialState = {
   smartContract: null,
   web3: null,
   errorMsg: "",
+  isPresaleAllowed : false
 };
 
 const blockchainReducer = (state = initialState, action) => {
@@ -32,6 +33,11 @@ const blockchainReducer = (state = initialState, action) => {
         ...state,
         account: action.payload.account,
       };
+      case "CHECK-FOR-PRESALE-USER" :
+        return {
+          ...state,
+          isPresaleAllowed : action.payload
+        }
     default:
       return state;
   }
