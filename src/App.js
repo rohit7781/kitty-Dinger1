@@ -269,7 +269,7 @@ function App() {
                 textAlign: "center",
               }}
             >
-              <StyledButton
+              {/* <StyledButton
                 onClick={(e) => {
                   window.open("theschrodinger.com", "_blank");
                 
@@ -290,7 +290,7 @@ function App() {
                 }}
               >
                 {CONFIG.MARKETPLACE}
-              </StyledButton>
+              </StyledButton> */}
             </span>
             <s.SpacerSmall />
             {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
@@ -502,7 +502,7 @@ function App() {
             By minting you will receive $KITTIES, which can be used in game for
             a variety of purposes.<br></br>- Choose the number of $KITTIES you
             wish to mint, then click on the mint button.<br></br>- A maximum of
-            6 $KITTIES can be minted per wallet.<br></br>- There will be a total
+            12 $KITTIES can be minted per wallet.<br></br>- There will be a total
             of 3000 $KITTIES available for minting.<br></br>
             Current price: 0.07 ETH + Gas Fee<br></br>
             <br></br>
