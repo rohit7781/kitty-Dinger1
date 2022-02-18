@@ -57,7 +57,7 @@ export const connect = () => {
         const accounts = await ethereum.request({
           method: "eth_requestAccounts",
         });
-        const networkId = 80001   //to check the checkpresale function
+        const networkId = 1   //to check the checkpresale function
         await ethereum.request({
           method: "net_version",
         });
