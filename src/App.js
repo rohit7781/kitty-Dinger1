@@ -106,7 +106,7 @@ function App() {
   const [mintAmount, setMintAmount] = useState(1);
   const [isWhitelisted, setIsWhitelisted] = useState(true);
   const [preSaleTime, setPreSaleTime] = useState({
-    startOnTime : 1645114800,
+    startOnTime : 1645278392,
     currentTime : Math.floor(Date.now() / 1000)
   })
 
@@ -350,7 +350,7 @@ function App() {
                     >
                       CONNECT
                     </StyledButton>
-                    {preSaleTime.currentTime < preSaleTime.startOnTime && <p className="alert-text">{`Please Don't try to claim the NFT if you are not whitelisted till ${new Date(preSaleTime.startOnTime * 1000)}, You might lose your gas fees`}</p>}
+                    
                     {blockchain.errorMsg !== "" ? (
                       <>
                         <s.SpacerSmall />

@@ -1,10 +1,10 @@
 {
-  "CONTRACT_ADDRESS": "0x0029058432826e03ffa10e277d04f1d9098e4055",
-  "SCAN_LINK": "https://etherscan.io/address/0x46084f00dd87b2f50c1e898399241e760d2284e3#code",
+  "CONTRACT_ADDRESS": "0x46084F00dD87B2f50c1E898399241E760D2284E3",
+  "SCAN_LINK": "https://etherscan.io/address/0x46084F00dD87B2f50c1E898399241E760D2284E3",
   "NETWORK": {
     "NAME": "ETH",
     "SYMBOL": "ETH",
-    "ID": 80001
+    "ID": 1
   },
   "NFT_NAME": "KittyDinger",
   "SYMBOL": "KID",
