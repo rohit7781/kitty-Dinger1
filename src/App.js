@@ -101,14 +101,12 @@ function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
-  const smartContract = useSelector((state) => state.blockchain.smartContract);
-  const isPresaleAllowed = useSelector((state) => state.blockchain.isPresaleAllowed);
   const [claimingNft, setClaimingNft] = useState(false);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
   const [isWhitelisted, setIsWhitelisted] = useState(true);
   const [preSaleTime, setPreSaleTime] = useState({
-    startOnTime : 0,
+    startOnTime : 1645114800,
     currentTime : Math.floor(Date.now() / 1000)
   })
 
@@ -138,19 +136,23 @@ function App() {
     setIsWhitelisted(result);
   };
 
-  const checkForPresaleUser = async () => {
-    if (isWhitelisted) {
-      setTimeout(()=> {
-        smartContract && smartContract["_jsonInterface"].forEach((elm)=> {
-        if(elm.name === "saleStartsOn") {
-          const timeData = {startOnTime : elm.outputs[0].name, currentTime : Math.floor(Date.now() / 1000)}
-          setPreSaleTime(timeData)
-          if(elm.outputs[0].name - Math.floor(Date.now() / 1000) > 0){
-          dispatch(checkPresaleUser(true))
-          }
-        }})
-      }, 2000)
-    }}
+  // const checkForPresaleUser = async () => {
+  //   if (isWhitelisted) {
+  //     // setTimeout(()=> {
+  //     //   debugger
+  //       // console.log(blockchain.smartContract.methods.whitelisted(
+  //       //   "0x0029058432826e03ffa10e277d04f1d9098e4055"
+  //       // ))
+  //       smartContract && smartContract["_jsonInterface"].forEach((elm)=> {
+  //       if(elm.name === "saleStartsOn") {
+  //         const timeData = {startOnTime : elm.outputs[0].name, currentTime : Math.floor(Date.now() / 1000)}
+  //         setPreSaleTime(timeData)
+  //         if(elm.outputs[0].name - Math.floor(Date.now() / 1000) > 0){
+  //         dispatch(checkPresaleUser(true))
+  //         }
+  //       }})
+  //     // }, 2000)
+  //   }}
 
   const claimNFTs = () => {
     checkIfWhitelisted();
@@ -225,7 +227,7 @@ function App() {
 
   useEffect(() => {
     getConfig();
-    connect()(dispatch)
+    // connect()(dispatch)
   }, []);
 
   // useEffect(() => {
@@ -236,9 +238,9 @@ function App() {
     getData();
   }, [blockchain.account]);
 
-  useEffect(()=> {
-    checkForPresaleUser()
-    },[isWhitelisted])
+  // useEffect(()=> {
+  //     checkForPresaleUser()
+  //   },[isWhitelisted])
     
   return (
     <s.Screen>
@@ -371,6 +373,7 @@ function App() {
                     >
                       CONNECT
                     </StyledButton>
+                    {preSaleTime.currentTime < preSaleTime.startOnTime && <p className="alert-text">{`Please Don't try to claim the NFT if you are not whitelisted till ${new Date(preSaleTime.startOnTime * 1000)}, You might lose your gas fees`}</p>}
                     {blockchain.errorMsg !== "" ? (
                       <>
                         <s.SpacerSmall />
@@ -433,7 +436,7 @@ function App() {
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
                           e.preventDefault();
-                          !isPresaleAllowed? (preSaleTime.startOnTime < preSaleTime.currentTime ) && claimNFTs() : claimNFTs()
+                           claimNFTs()
                           getData();
                         }}
                       >

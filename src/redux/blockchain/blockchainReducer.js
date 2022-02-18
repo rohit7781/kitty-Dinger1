@@ -33,11 +33,11 @@ const blockchainReducer = (state = initialState, action) => {
         ...state,
         account: action.payload.account,
       };
-      case "CHECK-FOR-PRESALE-USER" :
-        return {
-          ...state,
-          isPresaleAllowed : action.payload
-        }
+      // case "CHECK-FOR-PRESALE-USER" :
+      //   return {
+      //     ...state,
+      //     isPresaleAllowed : action.payload
+      //   }
     default:
       return state;
   }

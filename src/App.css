@@ -7,6 +7,11 @@
     background-repeat: no-repeat;
     background-size: 100%;
   }
+  .alert-text {
+    text-align: center;
+    margin-top: 1rem;
+    color: lightblue;
+  }
 
   
     
