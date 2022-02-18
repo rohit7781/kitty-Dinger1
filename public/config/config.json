@@ -1,8 +1,8 @@
 {
   "CONTRACT_ADDRESS": "0x0029058432826e03ffa10e277d04f1d9098e4055",
-  "SCAN_LINK": "https://mumbai.polygonscan.com/token/0x069b6f8ef0cf2411f47917bd27e4e6c6db00738e",
+  "SCAN_LINK": "https://etherscan.io/address/0x46084f00dd87b2f50c1e898399241e760d2284e3#code",
   "NETWORK": {
-    "NAME": "ETH ",
+    "NAME": "ETH",
     "SYMBOL": "ETH",
     "ID": 80001
   },
