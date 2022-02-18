@@ -11,10 +11,24 @@ const rootReducer = combineReducers({
 const middleware = [thunk];
 const composeEnhancers = compose(applyMiddleware(...middleware),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
+
 const configureStore = () => {
   return createStore(rootReducer, composeEnhancers);
 };
 
-const store = configureStore();
+const store= configureStore();
 
 export default store;
+
+
+// export default () => {
+//   const store = createStore(
+//     combineReducers({
+//       blockchain: blockchainReducer,
+//       data: dataReducer,
+//     }),
+//     composeEnhancers(applyMiddleware(thunk))
+//   );
+
+//   return store;
+// };
