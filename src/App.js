@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { connect } from "./redux/blockchain/blockchainActions";
+import { connect,checkPresaleUser } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import webimage from "./web-image.png";
 import SocialFollow from "./SocialFollow";
@@ -101,10 +101,16 @@ function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
+  const smartContract = useSelector((state) => state.blockchain.smartContract);
+  const isPresaleAllowed = useSelector((state) => state.blockchain.isPresaleAllowed);
   const [claimingNft, setClaimingNft] = useState(false);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
-  const [isWhitelisted, setIsWhitelisted] = useState(false);
+  const [isWhitelisted, setIsWhitelisted] = useState(true);
+  const [preSaleTime, setPreSaleTime] = useState({
+    startOnTime : 0,
+    currentTime : Math.floor(Date.now() / 1000)
+  })
 
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -131,6 +137,20 @@ function App() {
     );
     setIsWhitelisted(result);
   };
+
+  const checkForPresaleUser = async () => {
+    if (isWhitelisted) {
+      setTimeout(()=> {
+        smartContract && smartContract["_jsonInterface"].forEach((elm)=> {
+        if(elm.name === "saleStartsOn") {
+          const timeData = {startOnTime : elm.outputs[0].name, currentTime : Math.floor(Date.now() / 1000)}
+          setPreSaleTime(timeData)
+          if(elm.outputs[0].name - Math.floor(Date.now() / 1000) > 0){
+          dispatch(checkPresaleUser(true))
+          }
+        }})
+      }, 2000)
+    }}
 
   const claimNFTs = () => {
     checkIfWhitelisted();
@@ -205,6 +225,7 @@ function App() {
 
   useEffect(() => {
     getConfig();
+    connect()(dispatch)
   }, []);
 
   // useEffect(() => {
@@ -215,6 +236,10 @@ function App() {
     getData();
   }, [blockchain.account]);
 
+  useEffect(()=> {
+    checkForPresaleUser()
+    },[isWhitelisted])
+    
   return (
     <s.Screen>
       <s.Container
@@ -408,7 +433,7 @@ function App() {
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
                           e.preventDefault();
-                          claimNFTs();
+                          !isPresaleAllowed? (preSaleTime.startOnTime < preSaleTime.currentTime ) && claimNFTs() : claimNFTs()
                           getData();
                         }}
                       >

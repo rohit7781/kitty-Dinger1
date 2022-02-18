@@ -24,6 +24,13 @@ const connectFailed = (payload) => {
   };
 };
 
+export const checkPresaleUser = (payload) => {
+  return {
+    type: "CHECK-FOR-PRESALE-USER",
+    payload: payload,
+  };
+};
+
 const updateAccountRequest = (payload) => {
   return {
     type: "UPDATE_ACCOUNT",
@@ -57,7 +64,8 @@ export const connect = () => {
         const accounts = await ethereum.request({
           method: "eth_requestAccounts",
         });
-        const networkId = await ethereum.request({
+        const networkId = 80001   //to check the checkpresale function
+        await ethereum.request({
           method: "net_version",
         });
         if (networkId == CONFIG.NETWORK.ID) {
