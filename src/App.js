@@ -198,8 +198,7 @@ function App() {
   };
 
   const WalletConnect = async () => {
-    // await provider.enable();
-    // const web3 = new Web3(provider);
+    const user = await Moralis.authenticate({ provider: "walletconnect", chainId: 1 })
   };
 
 
