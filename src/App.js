@@ -8,15 +8,15 @@ import "./App.css";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 import Web3 from "web3";
-import WalletConnectProvider from "@walletconnect/web3-provider";
+// import WalletConnectProvider from "@walletconnect/web3-provider";
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 
   
-  const provider = new WalletConnectProvider({
-    infuraId: "91fea5ea39fc5898af040c6fd6c478c2", // Required
-  });
+  // const provider = new WalletConnectProvider({
+  //   infuraId: "91fea5ea39fc5898af040c6fd6c478c2", // Required
+  // });
 
 export const StyledButton = styled.button`
   padding: 10px;
@@ -198,8 +198,8 @@ function App() {
   };
 
   const WalletConnect = async () => {
-    await provider.enable();
-    const web3 = new Web3(provider);
+    // await provider.enable();
+    // const web3 = new Web3(provider);
   };
 
 
