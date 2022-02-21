@@ -7,9 +7,15 @@ import SocialFollow from "./SocialFollow";
 import "./App.css";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
+// import * as Moralis from "@walletconnect/web3-provider"
+import Moralis from "moralis";
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
+
+  
+Moralis.initialize("9lqvX9uIdweQxGIFjnmIA6s10h4DM4SfdBMDFt9M");
+Moralis.serverURL = "https://3dydnftciqp8.usemoralis.com:2053/server";
 
 export const StyledButton = styled.button`
   padding: 10px;
@@ -190,6 +196,12 @@ function App() {
     setMintAmount(newMintAmount);
   };
 
+  const WalletConnect = async () => {
+    const user = await Moralis.authenticate({ provider: "walletconnect", chainId: 1 })
+  };
+
+
+
   const getData = () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
       dispatch(fetchData(blockchain.account));
@@ -349,6 +361,18 @@ function App() {
                       }}
                     >
                       CONNECT
+                    </StyledButton>
+                    
+                    <StyledButton
+                     
+                      onClick={(e) => {
+                       // e.preventDefault();
+                        WalletConnect()
+                        // dispatch(connect());
+                        // getData();
+                      }}
+                    >
+                      Wallet Connect
                     </StyledButton>
                     
                     {blockchain.errorMsg !== "" ? (
