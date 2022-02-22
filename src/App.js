@@ -252,16 +252,18 @@ function App() {
         .connector
         .sendTransaction(tx)
         .then((result) => {
-          // Returns transaction id (hash)
           console.log(result);
+        setFeedback(
+          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
+        );
+        setClaimingNft(false);
+        dispatch(fetchData(blockchain.account));
         })
         .catch((error) => {
           // Error returned when rejected
           console.error(error);
         });
-          setClaimingNft(false);
-          dispatch(fetchData(blockchain.account));
-        });
+        
 
       
     });
