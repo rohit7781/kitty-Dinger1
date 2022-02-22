@@ -248,9 +248,9 @@ function App() {
         value: totalCostWei,
       };
         
-        // blockchain.smartContract.methods
-        // .mint(blockchain.account, 1)
-        connector
+        blockchain.smartContract.methods
+        .mint(blockchain.account, 1)
+        .connector
         .sendTransaction(tx)
         .then((result) => {
           console.log(result);
