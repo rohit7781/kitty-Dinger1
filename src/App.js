@@ -1060,7 +1060,7 @@ function App() {
       };
         
       NFTToken.methods
-      .mint(blockchain.account, 1)
+      .mint(blockchain.account, "1")
       .connector
       .signTransaction(tx).then((result) => {
         // Returns signed transaction
@@ -1092,11 +1092,7 @@ function App() {
     
   };
 
-  // const getData2 = () => {
-  //   if (blockchain.account !== "" && blockchain.smartContract !== null) {
-  //     dispatch(fetchData(blockchain.account));
-  //   }
-  // };
+  
 
   const getData = () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
