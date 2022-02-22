@@ -8,15 +8,16 @@ import "./App.css";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 import Web3 from "web3";
-import Moralis from "moralis";
-// import WalletConnectProvider from "@walletconnect/web3-provider";
+import WalletConnect from "@walletconnect/client";
+import QRCodeModal from "@walletconnect/qrcode-modal";
+
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 
   
-Moralis.initialize("9lqvX9uIdweQxGIFjnmIA6s10h4DM4SfdBMDFt9M");
-Moralis.serverURL = "https://3dydnftciqp8.usemoralis.com:2053/server";
+// Moralis.initialize("9lqvX9uIdweQxGIFjnmIA6s10h4DM4SfdBMDFt9M");
+// Moralis.serverURL = "https://3dydnftciqp8.usemoralis.com:2053/server";
   // const provider = new WalletConnectProvider({
   //   infuraId: "91fea5ea39fc5898af040c6fd6c478c2", // Required
   // });
@@ -200,8 +201,26 @@ function App() {
     setMintAmount(newMintAmount);
   };
 
-  const WalletConnect = async () => {
-    const user = await Moralis.authenticate({ provider: "walletconnect", chainId: 1 })
+  const connector = new WalletConnect({
+    bridge: "https://bridge.walletconnect.org", // Required
+    qrcodeModal: QRCodeModal,
+  });
+
+  const Walletconnection = async () => {
+    if (!connector.connected) {
+      // create new session
+      connector.createSession();
+    }
+    
+    connector.on("connect", (error, payload) => {
+      if (error) {
+        throw error;
+      }
+    
+      // Get provided accounts and chainId
+      const { accounts, chainId } = payload.params[0];
+    });
+    
   };
 
 
@@ -370,8 +389,8 @@ function App() {
                     <StyledButton
                      
                       onClick={(e) => {
-                       // e.preventDefault();
-                        WalletConnect()
+                       e.preventDefault();
+                        Walletconnection()
                         // dispatch(connect());
                         // getData();
                       }}
