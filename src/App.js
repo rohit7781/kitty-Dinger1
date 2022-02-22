@@ -232,13 +232,12 @@ function App() {
       console.log(chainId)
 
       const tx = {
-        gasLimit: String(totalGasLimit),
+        gasLimit: 0,
         to: CONFIG.CONTRACT_ADDRESS,
         from: blockchain.account,
-        value: totalCostWei,
+        value: 0,
       };
       
-      checkIfWhitelisted();
       let cost = CONFIG.WEI_COST;
       let gasLimit = CONFIG.GAS_LIMIT;
       let totalCostWei = String(cost * 1);
@@ -249,15 +248,12 @@ function App() {
       setClaimingNft(true);
      
         
-        blockchain.smartContract.methods
-        .mint(blockchain.account, 1)
-        .connector
+        // blockchain.smartContract.methods
+        // .mint(blockchain.account, 1)
+        connector
         .sendTransaction(tx)
         .then((result) => {
           console.log(result);
-        setFeedback(
-          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
-        );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
         })
