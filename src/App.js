@@ -220,7 +220,8 @@ function App() {
     connection=true
       // Get provided accounts and chainId
       const { accounts, chainId } = payload.params[0];
-      blockchain.account=accounts
+      blockchain.account=accounts[0]
+      console.log("Blockchain")
       console.log(blockchain.account)
       console.log(accounts)
       console.log(chainId)
