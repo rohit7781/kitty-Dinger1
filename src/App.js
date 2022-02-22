@@ -219,8 +219,8 @@ function App() {
     
       // Get provided accounts and chainId
       const { accounts, chainId } = payload.params[0];
-      log.console(accounts)
-      log.console(chainId)
+      console.log(accounts)
+      console.log(chainId)
     });
     
   };
