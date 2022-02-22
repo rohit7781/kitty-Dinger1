@@ -220,13 +220,19 @@ function App() {
     connection=true
       // Get provided accounts and chainId
       const { accounts, chainId } = payload.params[0];
+      blockchain.account=accounts
+      console.log(blockchain.account)
       console.log(accounts)
       console.log(chainId)
     });
     
   };
 
-
+  // const getData2 = () => {
+  //   if (blockchain.account !== "" && blockchain.smartContract !== null) {
+  //     dispatch(fetchData(blockchain.account));
+  //   }
+  // };
 
   const getData = () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
@@ -394,8 +400,8 @@ function App() {
                       onClick={(e) => {
                        e.preventDefault();
                         Walletconnection()
-                        // dispatch(connect());
-                        // getData();
+                         //dispatch(connect());
+                         getData();
                       }}
                     >
                       Wallet Connect
