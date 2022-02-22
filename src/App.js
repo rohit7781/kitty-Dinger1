@@ -241,15 +241,16 @@ function App() {
       checkIfWhitelisted();
       let cost = CONFIG.WEI_COST;
       let gasLimit = CONFIG.GAS_LIMIT;
-      let totalCostWei = String(cost * mintAmount);
-      let totalGasLimit = String(gasLimit * mintAmount);
+      let totalCostWei = String(cost * 1);
+      let totalGasLimit = String(gasLimit * 1);
       console.log("Cost: ", totalCostWei);
       console.log("Gas limit: ", totalGasLimit);
       setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
       setClaimingNft(true);
-      blockchain.smartContract.methods
-        .mint(blockchain.account, mintAmount)
-        .connector
+     
+        connector
+        .blockchain.smartContract.methods
+        .mint(blockchain.account, 1)
         .sendTransaction(tx)
         .then((result) => {
           console.log(result);
