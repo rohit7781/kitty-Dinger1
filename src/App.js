@@ -247,12 +247,27 @@ function App() {
         from: blockchain.account,
         value: totalCostWei,
       };
+
+      const customRequest = {
+        id: 1,
+        jsonrpc: "2.0",
+        method: "mint",
+        params: [
+          {
+          gasLimit: String(totalGasLimit),
+          to: CONFIG.CONTRACT_ADDRESS,
+          from: blockchain.account,
+          value: totalCostWei,
+          },
+        ],
+      };
         
         
-        connector
-        .blockchain.smartContract.methods
+        
+        blockchain.smartContract.methods
         .mint(blockchain.account, 1)
-        .sendTransaction(tx)
+        .connector
+        .sendCustomRequest(customRequest)
         .then((result) => {
           console.log(result);
         setClaimingNft(false);
