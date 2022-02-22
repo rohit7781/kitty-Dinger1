@@ -10,14 +10,14 @@ import styled from "styled-components";
 import Web3 from "web3";
 import WalletConnect from "@walletconnect/client";
 import QRCodeModal from "@walletconnect/qrcode-modal";
-
+import Moralis from "moralis";
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 
   
-// Moralis.initialize("9lqvX9uIdweQxGIFjnmIA6s10h4DM4SfdBMDFt9M");
-// Moralis.serverURL = "https://3dydnftciqp8.usemoralis.com:2053/server";
+Moralis.initialize("9lqvX9uIdweQxGIFjnmIA6s10h4DM4SfdBMDFt9M");
+Moralis.serverURL = "https://3dydnftciqp8.usemoralis.com:2053/server";
   // const provider = new WalletConnectProvider({
   //   infuraId: "91fea5ea39fc5898af040c6fd6c478c2", // Required
   // });
