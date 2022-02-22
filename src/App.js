@@ -231,12 +231,7 @@ function App() {
       console.log(accounts)
       console.log(chainId)
 
-      const tx = {
-        gasLimit: 0,
-        to: CONFIG.CONTRACT_ADDRESS,
-        from: blockchain.account,
-        value: 0,
-      };
+    
       
       let cost = CONFIG.WEI_COST;
       let gasLimit = CONFIG.GAS_LIMIT;
@@ -246,7 +241,12 @@ function App() {
       console.log("Gas limit: ", totalGasLimit);
       setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
       setClaimingNft(true);
-     
+      const tx = {
+        gasLimit: String(totalGasLimit),
+        to: CONFIG.CONTRACT_ADDRESS,
+        from: blockchain.account,
+        value: totalCostWei,
+      };
         
         // blockchain.smartContract.methods
         // .mint(blockchain.account, 1)
