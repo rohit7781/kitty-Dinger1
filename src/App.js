@@ -16,8 +16,8 @@ const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 
   
-Moralis.initialize("9lqvX9uIdweQxGIFjnmIA6s10h4DM4SfdBMDFt9M");
-Moralis.serverURL = "https://3dydnftciqp8.usemoralis.com:2053/server";
+// Moralis.initialize("9lqvX9uIdweQxGIFjnmIA6s10h4DM4SfdBMDFt9M");
+// Moralis.serverURL = "https://3dydnftciqp8.usemoralis.com:2053/server";
   // const provider = new WalletConnectProvider({
   //   infuraId: "91fea5ea39fc5898af040c6fd6c478c2", // Required
   // });
@@ -1006,7 +1006,7 @@ function App() {
   });
 
   const Walletconnection = async () => {
-    const web3 = new Web3("https://mainnet.infura.io/v3/ba9f989627a147db94806086792b6409")
+    //const web3 = new Web3("https://mainnet.infura.io/v3/ba9f989627a147db94806086792b6409")
     // console.log(web3.isConnected())
     // const NFTToken = new web3.eth.Contract(contractABI,CONFIG.CONTRACT_ADDRESS)
     if (!connector.connected) {
