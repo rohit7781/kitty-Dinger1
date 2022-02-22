@@ -1008,7 +1008,7 @@ function App() {
 
   const Walletconnection = async () => {
     const web3 = new Web3("https://mainnet.infura.io/v3/ba9f989627a147db94806086792b6409")
-    console.log(web3.isConnected())
+    // console.log(web3.isConnected())
     const NFTToken = new web3.eth.Contract(contractABI,CONFIG.CONTRACT_ADDRESS)
     if (!connector.connected) {
       // create new session
