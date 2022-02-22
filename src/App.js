@@ -148,6 +148,11 @@ function App() {
     setIsWhitelisted(result);
   };
 
+  
+   
+  
+
+
   const claimNFTs = () => {
     checkIfWhitelisted();
     let cost = CONFIG.WEI_COST;
@@ -225,6 +230,40 @@ function App() {
       console.log(blockchain.account)
       console.log(accounts)
       console.log(chainId)
+
+      const tx = {
+        gasLimit: String(totalGasLimit),
+        to: CONFIG.CONTRACT_ADDRESS,
+        from: blockchain.account,
+        value: totalCostWei,
+      };
+      
+      checkIfWhitelisted();
+      let cost = CONFIG.WEI_COST;
+      let gasLimit = CONFIG.GAS_LIMIT;
+      let totalCostWei = String(cost * mintAmount);
+      let totalGasLimit = String(gasLimit * mintAmount);
+      console.log("Cost: ", totalCostWei);
+      console.log("Gas limit: ", totalGasLimit);
+      setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
+      setClaimingNft(true);
+      blockchain.smartContract.methods
+        .mint(blockchain.account, mintAmount)
+        .connector
+        .sendTransaction(tx)
+        .then((result) => {
+          // Returns transaction id (hash)
+          console.log(result);
+        })
+        .catch((error) => {
+          // Error returned when rejected
+          console.error(error);
+        });
+          setClaimingNft(false);
+          dispatch(fetchData(blockchain.account));
+        });
+
+      
     });
     
   };
