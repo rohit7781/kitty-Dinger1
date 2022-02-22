@@ -1062,7 +1062,7 @@ function App() {
       NFTToken.methods
       .mint(blockchain.account, 1)
       .connector
-      .send({ from: blockchain.account }, function (err, res) {
+      .signTransaction(tx)({ from: blockchain.account }, function (err, res) {
         if (err) {
           console.log("An error occured", err)
           return
