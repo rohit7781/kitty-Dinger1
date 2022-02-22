@@ -264,9 +264,9 @@ function App() {
         
         
         
-        blockchain.smartContract.methods
-        .mint(blockchain.account, 1)
-        .connector
+        // blockchain.smartContract.methods
+        // .mint(blockchain.account, 1)
+        connector
         .sendCustomRequest(customRequest)
         .then((result) => {
           console.log(result);
