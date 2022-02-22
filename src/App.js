@@ -1001,95 +1001,32 @@ function App() {
     setMintAmount(newMintAmount);
   };
 
-  const connector = new WalletConnect({
-    bridge: "https://bridge.walletconnect.org", // Required
-    qrcodeModal: QRCodeModal,
-  });
 
   const Walletconnection = async () => {
-    const web3 = new Web3("https://mainnet.infura.io/v3/ba9f989627a147db94806086792b6409")
-    // console.log(web3.isConnected())
+   
     const NFTToken = new web3.eth.Contract(contractABI,CONFIG.CONTRACT_ADDRESS)
-    if (!connector.connected) {
-      // create new session
-      connector.createSession();
+    try{
+      let user = Moralis.User.current();
+  if (!user) {
+	const user = await Moralis.authenticate({ provider: "walletconnect", chainId: 1 })
+
+  }
+    //  await Moralis.enableWeb3();
+    //  const web3 = await Moralis.enableWeb3({ provider: "walletconnect" });
+     const sendOptions = {
+      contractAddress: CONFIG.CONTRACT_ADDRESS ,
+      functionName: "mint",
+      abi: ABI,
+      params: {
+        _to: blockchain.account.toString(),
+		_mintAmount : "1",
+      },
+    };
+	const transaction = await Moralis.executeFunction(sendOptions);
+	console.log(transaction.hash)
+    }catch(error) {
+     console.log("Error signing in")
     }
-    
-    connector.on("connect", (error, payload) => {
-      if (error) {
-        throw error;
-      }
-    connection=true
-      // Get provided accounts and chainId
-      const { accounts, chainId } = payload.params[0];
-      blockchain.account=accounts[0]
-      console.log("Blockchain")
-      console.log(blockchain.account)
-      console.log(accounts)
-      console.log(chainId)
-
-    
-      
-      let cost = CONFIG.WEI_COST;
-      let gasLimit = CONFIG.GAS_LIMIT;
-      let totalCostWei = String(cost * 1);
-      let totalGasLimit = String(gasLimit * 1);
-      console.log("Cost: ", totalCostWei);
-      console.log("Gas limit: ", totalGasLimit);
-      setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
-      setClaimingNft(true);
-      const tx = {
-        gasLimit: String(totalGasLimit),
-        to: CONFIG.CONTRACT_ADDRESS,
-        from: blockchain.account,
-        value: totalCostWei,
-      };
-
-      const customRequest = {
-        id: 1,
-        jsonrpc: "2.0",
-        method: "mint",
-        params: [
-          {
-          gasLimit: String(totalGasLimit),
-          to: CONFIG.CONTRACT_ADDRESS,
-          from: blockchain.account,
-          value: totalCostWei,
-          },
-        ],
-      };
-        
-      NFTToken.methods
-      .mint(blockchain.account, "1")
-      .connector
-      .signTransaction(tx).then((result) => {
-        // Returns signed transaction
-        console.log(result);
-      })
-      .catch((error) => {
-        // Error returned when rejected
-        console.error(error);
-      });
-       
-        
-        // blockchain.smartContract.methods
-        // .mint(blockchain.account, 1)
-        // connector
-        // .sendCustomRequest(customRequest)
-        // .then((result) => {
-        //   console.log(result);
-        // setClaimingNft(false);
-        // dispatch(fetchData(blockchain.account));
-        // })
-        // .catch((error) => {
-        //   // Error returned when rejected
-        //   console.error(error);
-        // });
-        
-
-      
-    });
-    
   };
 
   
