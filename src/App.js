@@ -1062,13 +1062,15 @@ function App() {
       NFTToken.methods
       .mint(blockchain.account, 1)
       .connector
-      .signTransaction(tx)({ from: blockchain.account }, function (err, res) {
-        if (err) {
-          console.log("An error occured", err)
-          return
-        }
-        console.log("Hash of the transaction: " + res)
+      .signTransaction(tx).then((result) => {
+        // Returns signed transaction
+        console.log(result);
       })
+      .catch((error) => {
+        // Error returned when rejected
+        console.error(error);
+      });
+       
         
         // blockchain.smartContract.methods
         // .mint(blockchain.account, 1)
