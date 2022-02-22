@@ -110,6 +110,7 @@ export const StyledLink = styled.a`
 
 function App() {
   const dispatch = useDispatch();
+  let connection = false;
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
@@ -127,7 +128,7 @@ function App() {
     NETWORK: {
       NAME: "",
       SYMBOL: "",
-      ID: 0,
+      ID: 1,
     },
     NFT_NAME: "",
     SYMBOL: "",
@@ -216,7 +217,7 @@ function App() {
       if (error) {
         throw error;
       }
-    
+    connection=true
       // Get provided accounts and chainId
       const { accounts, chainId } = payload.params[0];
       console.log(accounts)
@@ -393,14 +394,14 @@ function App() {
                       onClick={(e) => {
                        e.preventDefault();
                         Walletconnection()
-                        // dispatch(connect());
-                        // getData();
+                        dispatch(connect());
+                        getData();
                       }}
                     >
                       Wallet Connect
                     </StyledButton>
                     
-                    {blockchain.errorMsg !== "" ? (
+                    {blockchain.errorMsg !== "" || connection==true ? (
                       <>
                         <s.SpacerSmall />
                         <s.TextDescription
