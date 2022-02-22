@@ -248,9 +248,10 @@ function App() {
       setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
       setClaimingNft(true);
      
-        connector
-        .blockchain.smartContract.methods
+        
+        blockchain.smartContract.methods
         .mint(blockchain.account, 1)
+        .connector
         .sendTransaction(tx)
         .then((result) => {
           console.log(result);
