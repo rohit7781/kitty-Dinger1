@@ -394,8 +394,8 @@ function App() {
                       onClick={(e) => {
                        e.preventDefault();
                         Walletconnection()
-                        dispatch(connect());
-                        getData();
+                        // dispatch(connect());
+                        // getData();
                       }}
                     >
                       Wallet Connect
