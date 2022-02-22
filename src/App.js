@@ -408,7 +408,7 @@ function App() {
                       Wallet Connect
                     </StyledButton>
                     
-                    {blockchain.errorMsg !== "" || connection==true ? (
+                    {blockchain.errorMsg !== "" || blockchain.account!="" ? (
                       <>
                         <s.SpacerSmall />
                         <s.TextDescription
