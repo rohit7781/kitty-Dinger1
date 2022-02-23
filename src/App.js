@@ -233,10 +233,10 @@ const provider = new WalletConnectProvider({
 
 
 
-    //   let cost = CONFIG.WEI_COST;
-    //   let gasLimit = CONFIG.GAS_LIMIT;
-    //   let totalCostWei = String(cost * 1);
-    //   let totalGasLimit = String(gasLimit * 1);
+      let cost = CONFIG.WEI_COST;
+      let gasLimit = CONFIG.GAS_LIMIT;
+      let totalCostWei = String(cost * 1);
+      let totalGasLimit = String(gasLimit * 1);
     //   console.log("Cost: ", totalCostWei);
     //   console.log("Gas limit: ", totalGasLimit);
     //   setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
