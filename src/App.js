@@ -10,7 +10,7 @@ import styled from "styled-components";
 import Web3 from "web3";
 import WalletConnect from "@walletconnect/client";
 import QRCodeModal from "@walletconnect/qrcode-modal";
-// import Moralis from "moralis";
+import Moralis from "moralis";
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
@@ -941,11 +941,6 @@ function App() {
     );
     setIsWhitelisted(result);
   };
-
-  
-   
-  
-
 
   const claimNFTs = () => {
     checkIfWhitelisted();
