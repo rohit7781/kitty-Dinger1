@@ -241,14 +241,13 @@ const provider = new WalletConnectProvider({
     //   console.log("Gas limit: ", totalGasLimit);
     //   setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     //   setClaimingNft(true);
-    //   const tx = {
-    //     gasLimit: String(totalGasLimit),
-    //     to: CONFIG.CONTRACT_ADDRESS,
-    //     from: blockchain.account,
-    //     value: totalCostWei,
-	// 	// methods: mint(blockchain.account, 1),
+      const tx = {
+        gasLimit: String(totalGasLimit),
+        to: CONFIG.CONTRACT_ADDRESS,
+        from: blockchain.account,
+        value: totalCostWei,
 		
-    //   };
+      };
 
     //   blockchain.smartContract.methods
     //    .mint(blockchain.account,1)
@@ -283,7 +282,7 @@ const provider = new WalletConnectProvider({
 	console.log(accounts)
 	
 	const NameContract = new web3.eth.Contract(abi, CONFIG.CONTRACT_ADDRESS);
-	NameContract.methods.mint(accounts[0],1).send();
+	NameContract.methods.mint(accounts[0],1).send(tx);
 
   };
   
