@@ -241,13 +241,7 @@ const provider = new WalletConnectProvider({
     //   console.log("Gas limit: ", totalGasLimit);
     //   setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     //   setClaimingNft(true);
-      const tx = {
-        gasLimit: String(totalGasLimit),
-        to: CONFIG.CONTRACT_ADDRESS,
-        from: blockchain.account,
-        value: totalCostWei,
-		
-      };
+     
 
     //   blockchain.smartContract.methods
     //    .mint(blockchain.account,1)
@@ -278,6 +272,13 @@ const provider = new WalletConnectProvider({
 	const web3 = new Web3(provider);
 	
 	const accounts = await web3.eth.getAccounts();
+	const tx = {
+        gasLimit: String(totalGasLimit),
+        to: CONFIG.CONTRACT_ADDRESS,
+        from: accounts[0],
+        value: totalCostWei,
+		
+      };
 	console.log(blockchain.account)
 	console.log(accounts)
 	
