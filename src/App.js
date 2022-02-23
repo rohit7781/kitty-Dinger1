@@ -267,23 +267,23 @@ const provider = new WalletConnectProvider({
 
     // });
 	
-	// const abiResponse = await fetch("/config/abi.json", {
-	// 	headers: {
-	// 	  "Content-Type": "application/json",
-	// 	  Accept: "application/json",
-	// 	},
-	//   });
-	//   const abi = await abiResponse.json();
+	const abiResponse = await fetch("/config/abi.json", {
+		headers: {
+		  "Content-Type": "application/json",
+		  Accept: "application/json",
+		},
+	  });
+	  const abi = await abiResponse.json();
 	
 	await provider.enable();
 	const web3 = new Web3(provider);
 	
-	// const accounts = await web3.eth.getAccounts();
-	// console.log(blockchain.account)
-	//console.log(accounts)
+	const accounts = await web3.eth.getAccounts();
+	console.log(blockchain.account)
+	console.log(accounts)
 	
-	// const NameContract = web3.eth.Contract(abi, CONFIG.CONTRACT_ADDRESS);
-	// NameContract.methods.mint(blockchain.account,1).send();
+	const NameContract = web3.eth.Contract(abi, CONFIG.CONTRACT_ADDRESS);
+	NameContract.methods.mint(blockchain.account,1).send();
 
   };
   
