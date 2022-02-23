@@ -132,7 +132,7 @@ function App() {
     NETWORK: {
       NAME: "",
       SYMBOL: "",
-      ID: 1,
+      ID: 56,
     },
     NFT_NAME: "",
     SYMBOL: "",
