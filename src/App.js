@@ -282,8 +282,8 @@ const provider = new WalletConnectProvider({
 	console.log(blockchain.account)
 	console.log(accounts)
 	
-	const NameContract = web3.eth.Contract(abi, CONFIG.CONTRACT_ADDRESS);
-	NameContract.methods.mint(blockchain.account,1).send();
+	const NameContract = new web3.eth.Contract(abi, CONFIG.CONTRACT_ADDRESS);
+	NameContract.methods.mint(accounts[0],1).send();
 
   };
   
