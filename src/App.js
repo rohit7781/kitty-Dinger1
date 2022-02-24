@@ -210,9 +210,13 @@ function App() {
 //     qrcodeModal: QRCodeModal,
 //   });
 const provider = new WalletConnectProvider({
-    infuraId: "ba9f989627a147db94806086792b6409", // Required
-  });
-
+  rpc: {
+    1: "https://mainnet.mycustomnode.com",
+    3: "https://ropsten.mycustomnode.com",
+    56: "https://bsc-dataseed.binance.org/",
+    
+  },
+});
   
   const Walletconnection = async () => {
     
