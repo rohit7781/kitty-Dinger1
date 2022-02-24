@@ -215,7 +215,7 @@ const provider = new WalletConnectProvider({
 
   
   const Walletconnection = async () => {
-    await provider.disconnect()
+    
     // if (!connector.connected) {
     //   // create new session
     //   connector.createSession();
@@ -280,6 +280,7 @@ const provider = new WalletConnectProvider({
 
   provider.on("disconnect", (code: number, reason: string) => {
     console.log(code, reason);
+    await provider.disconnect()
   });
 	
 	const accounts = await web3.eth.getAccounts();
