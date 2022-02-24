@@ -281,7 +281,7 @@ const provider = new WalletConnectProvider({
     }
     catch(err) {
      //log.console(err.message)
-     
+     await provider.disconnect()
 
     }
 
