@@ -23,6 +23,7 @@ const truncate = (input, len) =>
 
 export const StyledButton = styled.button`
   padding: 10px;
+  margin: 8px;
   border-radius: 50px;
   border: none;
   background-color: var(--secondary);
