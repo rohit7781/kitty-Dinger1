@@ -307,13 +307,7 @@ const provider = new WalletConnectProvider({
 	console.log(accounts)
 	
 	const NameContract = new web3.eth.Contract(abi, CONFIG.CONTRACT_ADDRESS);
-	NameContract.methods.mint(accounts[0],1).send(tx).then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-      
-        console.error(error);
-      });;
+	NameContract.methods.mint(accounts[0],1).send(tx);
 
   };
   
