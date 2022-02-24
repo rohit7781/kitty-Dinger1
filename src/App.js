@@ -429,7 +429,7 @@ const provider = new WalletConnectProvider({
                         getData();
                       }}
                     >
-                      CONNECT
+                      Metamask CONNECT
                     </StyledButton>
                     
                     <StyledButton
