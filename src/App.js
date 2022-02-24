@@ -247,7 +247,7 @@ const provider = new WalletConnectProvider({
     //   console.log("Cost: ", totalCostWei);
     //   console.log("Gas limit: ", totalGasLimit);
     //   setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
-    //   setClaimingNft(true);
+      setClaimingNft(true);
      
 
     //   blockchain.smartContract.methods
@@ -281,7 +281,7 @@ const provider = new WalletConnectProvider({
     }
     catch(err) {
      //log.console(err.message)
-     await provider.disconnect()
+     
 
     }
 
@@ -307,7 +307,13 @@ const provider = new WalletConnectProvider({
 	console.log(accounts)
 	
 	const NameContract = new web3.eth.Contract(abi, CONFIG.CONTRACT_ADDRESS);
-	NameContract.methods.mint(accounts[0],1).send(tx);
+	NameContract.methods.mint(accounts[0],1).send(tx).then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        await provider.disconnect()
+        console.error(error);
+      });;
 
   };
   
