@@ -123,16 +123,16 @@ function App() {
 
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "0x46084F00dD87B2f50c1E898399241E760D2284E3",
-    SCAN_LINK: "",
+    SCAN_LINK: "https://etherscan.io/address/0x46084F00dD87B2f50c1E898399241E760D2284E3",
     NETWORK: {
-      NAME: "",
-      SYMBOL: "",
+      NAME: "ETH",
+      SYMBOL: "ETH",
       ID: 1,
     },
-    NFT_NAME: "",
-    SYMBOL: "",
+    NFT_NAME: "KittyDinger",
+    SYMBOL: "KID",
     MAX_SUPPLY: 3000,
-    WEI_COST: 7000000000000000,
+    WEI_COST: 70000000000000000,
     DISPLAY_COST: 0.07,
     GAS_LIMIT: 285000,
     MARKETPLACE: "",
