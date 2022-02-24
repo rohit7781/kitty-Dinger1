@@ -23,6 +23,7 @@ const truncate = (input, len) =>
 
 export const StyledButton = styled.button`
   padding: 10px;
+  cursor: pointer;
   margin: 8px;
   border-radius: 50px;
   border: none;
@@ -443,6 +444,15 @@ const provider = new WalletConnectProvider({
                       }}
                     >
                       Wallet Connect
+                    </StyledButton>
+                    <StyledButton
+                     
+                      onClick={(e) => {
+                       e.preventDefault();
+                       window.location.href = 'https://medium.com/@KittyDinger/kittydinger-og-nft-collection-3f561df0f224';
+                      }}
+                    >
+                      Benefits of NFT
                     </StyledButton>
                     
                     {blockchain.errorMsg !== ""? (
