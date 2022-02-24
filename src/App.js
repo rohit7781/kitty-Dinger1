@@ -275,8 +275,16 @@ const provider = new WalletConnectProvider({
 	  });
 	  const abi = await abiResponse.json();
 	
-	await provider.enable();
-	const web3 = new Web3(provider);
+    try{
+      await provider.enable();
+      const web3 = new Web3(provider);
+    }
+    catch(err) {
+     log.console(err.message)
+     await provider.disconnect()
+
+    }
+
 
   provider.on("accountsChanged", (accounts: string[]) => {
     console.log(accounts);
