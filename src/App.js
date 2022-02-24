@@ -280,7 +280,7 @@ const provider = new WalletConnectProvider({
       const web3 = new Web3(provider);
     }
     catch(err) {
-     log.console(err.message)
+     //log.console(err.message)
      await provider.disconnect()
 
     }
