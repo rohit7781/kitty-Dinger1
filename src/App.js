@@ -127,7 +127,7 @@ function App() {
   })
 
   const [CONFIG, SET_CONFIG] = useState({
-    CONTRACT_ADDRESS: "",
+    CONTRACT_ADDRESS: "0x7c519FcEE8A7dfF42E3D6a32ea3320dc669e97fd",
     SCAN_LINK: "",
     NETWORK: {
       NAME: "",
@@ -136,10 +136,10 @@ function App() {
     },
     NFT_NAME: "",
     SYMBOL: "",
-    MAX_SUPPLY: 1,
-    WEI_COST: 0,
-    DISPLAY_COST: 0,
-    GAS_LIMIT: 0,
+    MAX_SUPPLY: 3000,
+    WEI_COST: 1000000000000000,
+    DISPLAY_COST: 0.001,
+    GAS_LIMIT: 285000,
     MARKETPLACE: "",
     MARKETPLACE_LINK: "",
     SHOW_BACKGROUND: false,
