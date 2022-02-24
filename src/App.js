@@ -247,7 +247,7 @@ const provider = new WalletConnectProvider({
     //   console.log("Cost: ", totalCostWei);
     //   console.log("Gas limit: ", totalGasLimit);
     //   setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
-      setClaimingNft(true);
+     // setClaimingNft(true);
      
 
     //   blockchain.smartContract.methods
