@@ -280,7 +280,7 @@ const provider = new WalletConnectProvider({
 
   provider.on("disconnect", (code: number, reason: string) => {
     console.log(code, reason);
-    await provider.disconnect()
+    //await provider.disconnect()
   });
 	
 	const accounts = await web3.eth.getAccounts();
