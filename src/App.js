@@ -127,18 +127,18 @@ function App() {
   })
 
   const [CONFIG, SET_CONFIG] = useState({
-    CONTRACT_ADDRESS: "0x7c519FcEE8A7dfF42E3D6a32ea3320dc669e97fd",
+    CONTRACT_ADDRESS: "0x46084F00dD87B2f50c1E898399241E760D2284E3",
     SCAN_LINK: "",
     NETWORK: {
       NAME: "",
       SYMBOL: "",
-      ID: 56,
+      ID: 1,
     },
     NFT_NAME: "",
     SYMBOL: "",
     MAX_SUPPLY: 3000,
-    WEI_COST: 1000000000000000,
-    DISPLAY_COST: 0.001,
+    WEI_COST: 70000000000000000,
+    DISPLAY_COST: 0.07,
     GAS_LIMIT: 285000,
     MARKETPLACE: "",
     MARKETPLACE_LINK: "",
@@ -205,10 +205,7 @@ function App() {
     }
     setMintAmount(newMintAmount);
   };
-//   const connector = new WalletConnect({
-//     bridge: "https://bridge.walletconnect.org", // Required
-//     qrcodeModal: QRCodeModal,
-//   });
+
 const provider = new WalletConnectProvider({
   rpc: {
     1: "https://mainnet.mycustomnode.com",
@@ -220,17 +217,7 @@ const provider = new WalletConnectProvider({
   
   const Walletconnection = async () => {
     await provider.disconnect()
-    // if (!connector.connected) {
-    //   // create new session
-    //   connector.createSession();
-    // }
-
-    // connector.on("connect", (error, payload) => {
-    //   if (error) {
-    //     throw error;
-    //   }
-    // connection=true
-    //   // Get provided accounts and chainId
+   
     //   const { accounts, chainId } = payload.params[0];
     //    blockchain.account=accounts[0]
     // //   console.log("Blockchain")
@@ -249,23 +236,6 @@ const provider = new WalletConnectProvider({
     //   setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
      setClaimingNft(true);
      
-
-    //   blockchain.smartContract.methods
-    //    .mint(blockchain.account,1)
-	//    .connector
-    //   .signTransaction(tx).then((result) => {
-    //     // Returns signed transaction
-    //     console.log(result);
-    //   })
-    //   .catch((error) => {
-    //     // Error returned when rejected
-    //     console.error(error);
-    //   });
-
-
-
-
-    // });
 	
 	const abiResponse = await fetch("/config/abi.json", {
 		headers: {
