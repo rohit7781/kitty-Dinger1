@@ -311,7 +311,7 @@ const provider = new WalletConnectProvider({
         console.log(result);
       })
       .catch((error) => {
-        await provider.disconnect()
+      
         console.error(error);
       });;
 
@@ -482,10 +482,8 @@ const provider = new WalletConnectProvider({
                       onClick={(e) => {
                        e.preventDefault();
                         Walletconnection()
-						// claimNFTs()
-                        //   getData();
-                         //dispatch(connect());
-                         getData();
+                        //  dispatch(connect());
+                        //  getData();
                       }}
                     >
                       Wallet Connect
