@@ -19,12 +19,7 @@ const truncate = (input, len) =>
 // Moralis.initialize("9lqvX9uIdweQxGIFjnmIA6s10h4DM4SfdBMDFt9M");
 // Moralis.serverURL = "https://3dydnftciqp8.usemoralis.com:2053/server";
 
-// const provider = new WalletConnectProvider({
-// 	rpc: {
-// 	  1: "https://mainnet.infura.io/v3/ba9f989627a147db94806086792b6409",
-	 
-// 	},
-//   });
+
 
 export const StyledButton = styled.button`
   padding: 10px;
@@ -207,13 +202,11 @@ function App() {
   };
 
 const provider = new WalletConnectProvider({
-  rpc: {
-    1: "https://mainnet.mycustomnode.com",
-    3: "https://ropsten.mycustomnode.com",
-    56: "https://bsc-dataseed.binance.org/",
-    
-  },
-});
+	rpc: {
+	  1: "https://mainnet.infura.io/v3/ba9f989627a147db94806086792b6409",
+	 
+	},
+  });
   
   const Walletconnection = async () => {
     await provider.disconnect()
