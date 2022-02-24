@@ -219,7 +219,7 @@ const provider = new WalletConnectProvider({
 });
   
   const Walletconnection = async () => {
-    
+    await provider.disconnect()
     // if (!connector.connected) {
     //   // create new session
     //   connector.createSession();
