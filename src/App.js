@@ -212,7 +212,10 @@ function App() {
 const provider = new WalletConnectProvider({
     infuraId: "ba9f989627a147db94806086792b6409", // Required
   });
+
+  
   const Walletconnection = async () => {
+    await provider.disconnect()
     // if (!connector.connected) {
     //   // create new session
     //   connector.createSession();
@@ -270,6 +273,14 @@ const provider = new WalletConnectProvider({
 	
 	await provider.enable();
 	const web3 = new Web3(provider);
+
+  provider.on("accountsChanged", (accounts: string[]) => {
+    console.log(accounts);
+  });
+
+  provider.on("disconnect", (code: number, reason: string) => {
+    console.log(code, reason);
+  });
 	
 	const accounts = await web3.eth.getAccounts();
 	const tx = {
