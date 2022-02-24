@@ -444,7 +444,7 @@ const provider = new WalletConnectProvider({
                       Wallet Connect
                     </StyledButton>
                     
-                    {blockchain.errorMsg !== "" || blockchain.account!="" ? (
+                    {blockchain.errorMsg !== ""? (
                       <>
                         <s.SpacerSmall />
                         <s.TextDescription
